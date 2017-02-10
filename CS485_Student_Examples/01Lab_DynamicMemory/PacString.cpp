@@ -6,43 +6,44 @@ PacString::PacString()
 
 PacString::PacString(const char * pszString)
 {
-	// ctor
-	//using std::copy;
-	//*mpszData = *pszString;
-	//new char * temp;// = pszString;
+	mpszData = new char [strlen(pszString) + 1];
 
-
-
-	
+	strcpy_s(mpszData, strlen(pszString) + 1, pszString);	
 }
 
 PacString::PacString(const PacString & rcData)
 {
-	// copy ctor
+	mpszData = rcData.mpszData;
 }
 
 PacString::~PacString()
 {
-}
-/*
-PacString & PacString::operator=(PacString rcData)
-{
-	// TODO: insert return statement here
+	delete mpszData;
 }
 
+PacString & PacString::operator=(PacString rcData)
+{
+	using std::swap;
+	swap (mpszData, rcData.mpszData);
+
+	return *this;
+}
+/*
 PacString & PacString::operator+=(const PacString & rcData)
 {
 	// TODO: insert return statement here
 	
 }
-
+*/
 PacString PacString::operator+(const PacString & rcData) const
 {
-	return PacString();
-}*/
+	strncat (mpszData, rcData.mpszData, (strlen(rcData.mpszData) + strlen(mpszData)) + 1);
+
+	return *this;
+}
 
 std::ostream & operator<<(std::ostream & out, const PacString & rcData)
 {
-	// TODO: insert return statement here
-	return out;
+	out << rcData.mpszData;
+ 	return out;
 }
