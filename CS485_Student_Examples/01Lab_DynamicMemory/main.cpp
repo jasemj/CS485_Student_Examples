@@ -8,7 +8,7 @@
 //***************************************************************************
 
 #define MEM_DEBUG
- #include "mem_debug.h"
+#include "mem_debug.h"
 
 #include <iostream>
 #include "PacString.h"
@@ -19,18 +19,12 @@ int main ()
 
   PacString s1 = "Hello!";
 
-  std::cout << "s1:" << s1 << std::endl;
+  std::cout << "s1: " << s1 << std::endl;
 
   PacString s2 ("World");
   std::cout << "s2: " << s2 << std::endl;
 
-  PacString s8 (s1);                               //our own stuff delete
-  std::cout << "s8:" << s8 << std::endl;          //
-
- // s1 = s2;										//
- // std::cout << "s1: " << s1 << std::endl;			//
- // std::cout << "s8:" << s8 << std::endl;			//
-
+ 
   PacString s3;
 
   s3 = s1 + s2;
