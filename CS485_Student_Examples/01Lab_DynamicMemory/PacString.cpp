@@ -20,6 +20,7 @@
 
 PacString::PacString()
 {
+	cout << "ctor(def)" << endl;
 }
 
 //***************************************************************************
@@ -36,7 +37,7 @@ PacString::PacString(const char * pszString)
 {
 
 	mpszData = new char [strlen(pszString) + 1];
-
+	cout << "ctor" << endl;
 	for (int i = 0; i < strlen(pszString) + 1; i++)
 	{
 		mpszData[i] = pszString[i];
@@ -56,7 +57,7 @@ PacString::PacString(const char * pszString)
 PacString::PacString(const PacString & rcData)
 {
 	mpszData = new char[strlen(rcData.mpszData) + 1];
-
+	cout << "ctor" << endl;
 	for (int i = 0; i < strlen(rcData.mpszData) + 1; i++)
 	{
 		mpszData[i] = rcData.mpszData[i];
@@ -78,7 +79,7 @@ PacString::~PacString()
 	
 	if (mpszData != nullptr)
 	{
-		//cout << "dtor " << mpszData << endl;
+		cout << "dtor " << mpszData << endl;
 		delete[] mpszData;
 	}
 	
