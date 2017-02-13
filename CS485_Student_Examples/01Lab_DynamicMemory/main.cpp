@@ -33,21 +33,34 @@ int main ()
 
   //s3 += (s3 + "!!");
 
-//  std::cout << "s3: " << s3 << std::endl;
+  //std::cout << "s3: " << s3 << std::endl;
 
 
 
   // TODO:
- // PacString *pcDynString;
+  PacString *pcDynString = new PacString;
 
   // dynamically allocate the PacString object using
   // pcDynString.
   // Assign "CS485" to pcDynString.
+
+  *pcDynString = "CS485";
+
+  cout << *pcDynString << endl;
+
+  *pcDynString = *pcDynString + " is the best!";
+
+  cout << *pcDynString << endl;
+
+  delete[] pcDynString;
+
   // Display pcDynString.
   // concatenate " is the best!" on to
   // pcDynString
   // Display pcDynString.
   // deallocate the object pcDynString 
+
+
 
   return EXIT_SUCCESS;
 }

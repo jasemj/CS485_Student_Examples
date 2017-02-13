@@ -69,13 +69,22 @@ PacString & PacString::operator=(const PacString & rcData)
 	return *this;
 }*/
 
-/*
-PacString & PacString::operator+=(const PacString & rcData)
-{
-	// TODO: insert return statement here
+//PacString & PacString::operator+=(const PacString & rcData)
+//{
 	
-}
-*/
+	
+	/*int size = strlen(mpszData) + strlen(rcData.mpszData) + 1;
+	char * temp = new char[size];
+
+	temp = mpszData + rcData.mpszData;
+
+	delete[] mpszData;
+
+	mpszData = temp;
+
+	return *this;*/
+//}
+
 PacString PacString::operator+(const PacString & rcData) const
 {
 	int count = 0;
