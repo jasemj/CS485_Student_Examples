@@ -125,6 +125,7 @@ PacString & PacString::operator=(const PacString & rcData)
 /*
 PacString & PacString::operator=(PacString rcData)
 {
+	cout << "ctor" << endl;
 	using std::swap;
 	swap (mpszData, rcData.mpszData);
 
