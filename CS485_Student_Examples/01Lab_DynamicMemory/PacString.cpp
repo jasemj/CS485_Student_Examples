@@ -1,3 +1,11 @@
+//***************************************************************************
+// File name:  PacString.cpp
+// Author:     Jasem Jaihouni and Joshua Napoles
+// Date:       2/9/2017
+// Class:      CS485
+// Assignment: Dynamic Memory Lab
+// Purpose:    Practice using raw pointers
+//***************************************************************************
 #include "PacString.h"
 
 PacString::PacString()
@@ -30,19 +38,37 @@ PacString::~PacString()
 	
 	if (mpszData != nullptr)
 	{
-		cout << "dtor " << mpszData << endl;
+		//cout << "dtor " << mpszData << endl;
 		delete[] mpszData;
 	}
 	
 }
 
-PacString & PacString::operator=(PacString rcData)
+PacString & PacString::operator=(const PacString & rcData)
+{
+
+	delete[] mpszData;
+	int size = strlen (rcData.mpszData) + 1;
+	char * temp = new char[size];
+	
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = rcData.mpszData[i];
+	}
+
+	mpszData = temp;
+
+	return *this;
+}
+
+/*PacString & PacString::operator=(PacString rcData)
 {
 	using std::swap;
 	swap (mpszData, rcData.mpszData);
 
 	return *this;
-}
+}*/
+
 /*
 PacString & PacString::operator+=(const PacString & rcData)
 {
@@ -55,8 +81,7 @@ PacString PacString::operator+(const PacString & rcData) const
 	int count = 0;
 	int size = strlen(mpszData) + strlen(rcData.mpszData) + 1;
 	char * temp = new char[size];
-	PacString tempString (temp);
-
+	
 	for (int i = 0; i < size; i++)
 	{
 		if (i < strlen(mpszData))
@@ -70,6 +95,7 @@ PacString PacString::operator+(const PacString & rcData) const
 		}
 	}
 
+	PacString tempString (temp);
 	delete[] temp;
 	return tempString;
 }
