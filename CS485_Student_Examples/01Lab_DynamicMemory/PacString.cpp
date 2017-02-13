@@ -37,7 +37,7 @@ PacString::PacString(const char * pszString)
 {
 
 	mpszData = new char [strlen(pszString) + 1];
-	cout << "ctor" << endl;
+	cout << "cctor*" << endl;
 	for (int i = 0; i < strlen(pszString) + 1; i++)
 	{
 		mpszData[i] = pszString[i];
@@ -57,7 +57,7 @@ PacString::PacString(const char * pszString)
 PacString::PacString(const PacString & rcData)
 {
 	mpszData = new char[strlen(rcData.mpszData) + 1];
-	cout << "ctor" << endl;
+	cout << "cctor&" << endl;
 	for (int i = 0; i < strlen(rcData.mpszData) + 1; i++)
 	{
 		mpszData[i] = rcData.mpszData[i];
@@ -97,7 +97,7 @@ PacString::~PacString()
 
 PacString & PacString::operator=(const PacString & rcData)
 {
-
+	
 	delete[] mpszData;
 	int size = strlen (rcData.mpszData) + 1;
 	char * temp = new char[size];
@@ -125,7 +125,6 @@ PacString & PacString::operator=(const PacString & rcData)
 /*
 PacString & PacString::operator=(PacString rcData)
 {
-	cout << "ctor" << endl;
 	using std::swap;
 	swap (mpszData, rcData.mpszData);
 
