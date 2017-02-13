@@ -8,9 +8,29 @@
 //***************************************************************************
 #include "PacString.h"
 
+//***************************************************************************
+// Constructor: PacString
+//
+// Description: Defualt constructor
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
+
 PacString::PacString()
 {
 }
+
+//***************************************************************************
+// Constructor: PacString
+//
+// Description: Sets mpszData to the string passed in.
+//
+// Parameters:  pszString - the string to set to mpszData
+//
+// Returned:    None
+//***************************************************************************
 
 PacString::PacString(const char * pszString)
 {
@@ -23,6 +43,16 @@ PacString::PacString(const char * pszString)
 	}
 }
 
+//***************************************************************************
+// Constructor: PacString
+//
+// Description: Sets mpszData to the string inside of the rcData object.
+//
+// Parameters:  rcData - the object containing the string
+//
+// Returned:    None
+//***************************************************************************
+
 PacString::PacString(const PacString & rcData)
 {
 	mpszData = new char[strlen(rcData.mpszData) + 1];
@@ -32,6 +62,16 @@ PacString::PacString(const PacString & rcData)
 		mpszData[i] = rcData.mpszData[i];
 	}
 }
+
+//***************************************************************************
+// Destrcutor:  ~PacString
+//
+// Description: Deletes the dynamic memory
+//
+// Parameters:  None
+//
+// Returned:    None
+//***************************************************************************
 
 PacString::~PacString()
 {
@@ -43,6 +83,16 @@ PacString::~PacString()
 	}
 	
 }
+
+//***************************************************************************
+// Function:    operator=
+//
+// Description: Sets mpszData to the paramater objects mpszData. 
+//
+// Parameters:  rcData - the object to copy the data from
+//
+// Returned:    The object operator= is called to return the object
+//***************************************************************************
 
 PacString & PacString::operator=(const PacString & rcData)
 {
@@ -61,7 +111,18 @@ PacString & PacString::operator=(const PacString & rcData)
 	return *this;
 }
 
-/*PacString & PacString::operator=(PacString rcData)
+
+//***************************************************************************
+// Function:    operator=
+//
+// Description: Sets mpszData to the paramater objects mpszData.
+//
+// Parameters:  rcData - the object to copy the data from
+//
+// Returned:    The object operator= is called to return the object
+//***************************************************************************
+/*
+PacString & PacString::operator=(PacString rcData)
 {
 	using std::swap;
 	swap (mpszData, rcData.mpszData);
@@ -84,6 +145,16 @@ PacString & PacString::operator=(const PacString & rcData)
 
 	return *this;*/
 //}
+
+//***************************************************************************
+// Function:    operator+
+//
+// Description: Add the paramater objects mpszData to our mpszData 
+//
+// Parameters:  rcData - the object to add the data from
+//
+// Returned:    The object operator= is called to return the object
+//***************************************************************************
 
 PacString PacString::operator+(const PacString & rcData) const
 {
@@ -108,6 +179,16 @@ PacString PacString::operator+(const PacString & rcData) const
 	delete[] temp;
 	return tempString;
 }
+//***************************************************************************
+// Function:    operator<<
+//
+// Description: Displays the data to the screen from our object 
+//
+// Parameters:  out - the ostream object to display to
+//				rcData - the object to display the data from
+//
+// Returned:    The ostream object
+//***************************************************************************
 
 std::ostream & operator<<(std::ostream & out, const PacString & rcData)
 {
